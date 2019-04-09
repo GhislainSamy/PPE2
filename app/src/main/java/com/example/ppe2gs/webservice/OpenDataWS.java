@@ -17,34 +17,36 @@ public class OpenDataWS {
 
     private static final String URL_Auth = "http://192.168.43.165/php_android/Authentification.php";
     private static final String URL_Evenement = "http://192.168.43.165/php_android/hpdSelectEvenement.php";
-     public static List<Evenement> getUserWS() throws Exception {
+    private static final String URL_INSERT = "http://192.168.43.165/php_android/insertParticiper.php";
+
+    public static List<Evenement> getUserWS() throws Exception {
 
 
-     String reponse = UtilHttp.getHttp(URL_Evenement );
-         Log.i("URL_Evenement", URL_Evenement);
-         Log.i("reponseS", reponse);
-     Gson gson = new Gson();
-     ListEvement resultat = gson.fromJson(reponse, ListEvement.class);
-         Log.i("resultatS",  resultat.getResultEvent().get(0).getEvenement().getAdresse());
-     List<Evenement> fields = new ArrayList<>();
-    if ( resultat == null)  {   throw  new Exception("Variable resultat à null");}
+        String reponse = UtilHttp.getHttp(URL_Evenement );
+        Log.i("URL_Evenement", URL_Evenement);
+        Log.i("reponseS", reponse);
+        Gson gson = new Gson();
+        ListEvement resultat = gson.fromJson(reponse, ListEvement.class);
+        Log.i("resultatS",  resultat.getResultEvent().get(0).getEvenement().getAdresse());
+        List<Evenement> fields = new ArrayList<>();
+        if ( resultat == null)  {   throw  new Exception("Variable resultat à null");}
 
 
-     if( resultat.getResultEvent() != null){
+        if( resultat.getResultEvent() != null){
 
-     for(ResultEvent record :  resultat.getResultEvent())
+            for(ResultEvent record :  resultat.getResultEvent())
 
-       {
-      Log.i("record", record.getEvenement().getAdresse());
-     fields.add(record.getEvenement());
+            {
+                Log.i("record", record.getEvenement().getAdresse());
+                fields.add(record.getEvenement());
 
 
-      }
+            }
 
-      }
+        }
 
-      return fields;
-      }
+        return fields;
+    }
 
 
     public static User getAuthUserWS(String username, String password) throws Exception {
@@ -61,12 +63,6 @@ public class OpenDataWS {
         return user;
     }
 
-    public static String getInsertUserWS(String idE, String idU) {
-        String URL = URL_INST+"?idE="++"&idU="+idU;
-        Log.i("URL", URL) ;
 
-        String reponse = UtilHttp.getHttp(URL );
-        Log.i("reponse", reponse) ;
-      return reponse ;
-    }
+
 }

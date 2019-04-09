@@ -43,12 +43,14 @@ public class DescriptionActivity extends AppCompatActivity {
 
         evenement = (Evenement) getIntent().getSerializableExtra("key");
         Log.i("evnt",evenement.getAdresse());
+        adresse.setText(evenement.getAdresse());
 
         titre.setText(evenement.getTitre());
 
         description.setText(evenement.getDescription());
+
         //datedebut.setText(evenement.getDateDebut());
-      //  datefin.setText(evenement.getDateFin());
+        //  datefin.setText(evenement.getDateFin());
 
 
 
@@ -58,7 +60,7 @@ public class DescriptionActivity extends AppCompatActivity {
 
 
     public void participer(View view) {
-        new MainActivity.MonAstask().execute(name,pasw);
+    //    new MainActivity.MonAstask().execute(name,pasw);
 
     }
 
@@ -71,7 +73,7 @@ public class DescriptionActivity extends AppCompatActivity {
         protected String  doInBackground(String... params) {
             try {
                 Log.i("re", params[0]);
-                resultat = OpenDataWS.getInsertUserWS(params[0], params[1]);
+          //      resultat = OpenDataWS.getInsertUserWS(params[0], params[1]);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -95,7 +97,6 @@ public class DescriptionActivity extends AppCompatActivity {
             if(!info.equals("true")) {
                 /* Here launching another activity when login successful. If you persist login state
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
-
                 */
                 Log.i("user", info);
 
