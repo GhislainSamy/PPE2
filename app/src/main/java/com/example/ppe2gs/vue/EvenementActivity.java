@@ -1,24 +1,29 @@
 package com.example.ppe2gs.vue;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.ppe2gs.R;
 import com.example.ppe2gs.modele.Evenement;
-import com.example.ppe2gs.modele.EvenementAdapter;
 import com.example.ppe2gs.modele.InitList;
+import com.example.ppe2gs.webservice.OpenDataWS;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class EvenementActivity extends AppCompatActivity {
 
-    private ArrayList<Evenement> evenements;
+    private List<Evenement> evenements;
 
     private EvenementAdapter adapterEvenement;
     ListView listeEvnt ;
@@ -28,20 +33,58 @@ public class EvenementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_evenement);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-evenements = InitList.getListEvenement();
+            evenements = new ArrayList<>();
         listeEvnt =  (ListView)findViewById(R.id.listeEvent) ;
-adapterEvenement= new EvenementAdapter(this,evenements);
-adapterEvenement.addAll(evenements);
-listeEvnt.setAdapter(adapterEvenement);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        adapterEvenement= new EvenementAdapter(this,evenements);
+        adapterEvenement.addAll(evenements);
+        listeEvnt.setAdapter(adapterEvenement);
+        listeEvnt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                final Evenement item = (Evenement) parent.getItemAtPosition(position);
+              /*  Toast.makeText(getApplicationContext(),
+                        "Click ListItem Number " + item.getAdresse(), Toast.LENGTH_LONG)
+                        .show();*/
+             Log.i("item",item.toString());
+                Intent intent = new Intent(EvenementActivity.this,DescriptionActivity.class);
+                intent.putExtra("key",item);
+                startActivity(intent);
             }
         });
+
+        EvenementActivity.MonAstask t = new EvenementActivity.MonAstask();
+        t.execute();
+
+    }
+
+
+
+    public class MonAstask extends AsyncTask {
+        List<Evenement> resultat = null ;
+        String text;
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try {
+                resultat = OpenDataWS.getUserWS();
+                // text = OpenDataWS.getInsertUserWS();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            evenements.clear();
+            evenements.addAll(resultat);
+           adapterEvenement.updateData();
+
+
+
+        }
     }
 
 

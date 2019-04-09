@@ -8,18 +8,19 @@ import java.time.LocalDate;
 
 
 public class Evenement implements Serializable {
-    private int id;
-    private String titre;
-    private String description;
-    private String adresse;
-    private LocalDate date_debut;
-    private LocalDate date_fin;
 
-    public int getId() {
+        private String id;
+        private String titre;
+        private String description;
+        private String adresse;
+        private String dateDebut;
+        private String dateFin;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -47,20 +48,32 @@ public class Evenement implements Serializable {
         this.adresse = adresse;
     }
 
-    public LocalDate getDate_debut() {
-        return date_debut;
+    public String getDateDebut() {
+        return dateDebut;
     }
 
-    public void setDate_debut(LocalDate date_debut) {
-        this.date_debut = date_debut;
+    public void setDateDebut(String dateDebut) {
+        this.dateDebut = dateDebut;
     }
 
-    public LocalDate getDate_fin() {
-        return date_fin;
+    public String getDateFin() {
+        return dateFin;
     }
 
-    public void setDate_fin(LocalDate date_fin) {
-        this.date_fin = date_fin;
+    public void setDateFin(String dateFin) {
+        this.dateFin = dateFin;
+    }
+
+    @Override
+    public String toString() {
+        return "Evenement{" +
+                "id='" + id + '\'' +
+                ", titre='" + titre + '\'' +
+                ", description='" + description + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", dateDebut='" + dateDebut + '\'' +
+                ", dateFin='" + dateFin + '\'' +
+                '}';
     }
 }
 

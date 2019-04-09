@@ -1,4 +1,4 @@
-package com.example.ppe2gs.modele;
+package com.example.ppe2gs.vue;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ppe2gs.R;
+import com.example.ppe2gs.modele.Evenement;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,12 +21,14 @@ import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.List;
+
 public class EvenementAdapter extends ArrayAdapter<Evenement> {
 
 
 
 
-    public EvenementAdapter(Context context, ArrayList<Evenement> fiels) {
+    public EvenementAdapter(Context context, List<Evenement> fiels) {
         super(context, 0, fiels);
     }
     @Override
