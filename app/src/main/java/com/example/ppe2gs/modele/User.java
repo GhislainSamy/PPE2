@@ -4,14 +4,10 @@ public class User {
 
     private String id;
     private String username;
-    private String roles;
+
     private String password;
-    private Object telephone;
-    private Object email;
-    private Object adresse;
-    private Object ville;
-    private Object cp;
-    private Object dateajout;
+    private String telephone;
+    private String email;
 
     public String getId() {
         return id;
@@ -29,13 +25,7 @@ public class User {
         this.username = username;
     }
 
-    public String getRoles() {
-        return roles;
-    }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
 
     public String getPassword() {
         return password;
@@ -45,51 +35,22 @@ public class User {
         this.password = password;
     }
 
-    public Object getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(Object telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Object email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public Object getAdresse() {
-        return adresse;
-    }
 
-    public void setAdresse(Object adresse) {
-        this.adresse = adresse;
-    }
 
-    public Object getVille() {
-        return ville;
-    }
-
-    public void setVille(Object ville) {
-        this.ville = ville;
-    }
-
-    public Object getCp() {
-        return cp;
-    }
-
-    public void setCp(Object cp) {
-        this.cp = cp;
-    }
-
-    public Object getDateajout() {
-        return dateajout;
-    }
-
-    public void setDateajout(Object dateajout) {
-        this.dateajout = dateajout;
-    }
 }

@@ -9,15 +9,15 @@ import com.google.gson.Gson;
 
 public class OpenDataWS {
 
-    private static final String URL_Auth = "http://192.168.18.1/php_android/Authentification.php";
+    private static final String URL_Auth = "http://172.20.10.4/php_android/Authentification.php";
 
 
 
-    public static User getAuthUserWS(String login, String mdp) throws Exception {
+    public static User getAuthUserWS(String username, String password) throws Exception {
 
 
-        String URL = URL_Auth+"?login="+login+"&mdp="+mdp;
-
+        String URL = URL_Auth+"?username="+username+"&password="+password;
+        Log.i("URL", URL) ;
         Gson gson = new Gson();
         String reponse = UtilHttp.getHttp(URL );
         Log.i("reponse", reponse) ;
