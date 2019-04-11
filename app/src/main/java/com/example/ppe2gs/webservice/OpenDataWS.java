@@ -62,8 +62,17 @@ public class OpenDataWS {
 
         return user;
     }
+   // public static String getInsertUserWS(String idE, String idU) {
+   //     String URL = URL_INSERT+"?idE="++"&idU="+idU;
+   //     Log.i("URL", URL) ;
+//
+//        String reponse = UtilHttp.getHttp(URL );
+//        Log.i("reponse", reponse) ;
+//        return reponse ;
+//    }
 
 
+<<<<<<< HEAD
    public static String getInsertUserWS(String idE, String idU)throws Exception {
         String URL = URL_INSERT+"?idE="+idE+"&idU="+idU;
        Log.i("URL", URL) ;
@@ -73,3 +82,6 @@ public class OpenDataWS {
        return reponse ;
     }
 }
+=======
+}
+>>>>>>> 7bf0f28dbacee2fc2d63fc43be102f3017bb6f31
