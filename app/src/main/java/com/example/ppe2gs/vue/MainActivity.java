@@ -116,12 +116,13 @@ public class MainActivity extends AppCompatActivity {
                      //   Toast.makeText(getApplicationContext(),"Nom d'utilisateur ou Mot de passe incorrect",Toast.LENGTH_LONG).show();
                     }
                 });
-        dialog.setNegativeButton("Annuler",new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("",new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
              //   Toast.makeText(getApplicationContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
             }
-        });
+        }
+        );
         AlertDialog alertDialog=dialog.create();
         alertDialog.show();
     }

@@ -115,7 +115,7 @@ public class DescriptionActivity extends AppCompatActivity {
 
     private void alertDialog() {
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
-        dialog.setMessage("Votre participation a etait ajouter a votre liste d'evenement");
+        dialog.setMessage("Votre evenement a etait ajouter a votre liste participation");
         dialog.setTitle("Participation a l'evenement");
         dialog.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
