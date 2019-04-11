@@ -107,19 +107,19 @@ public class MainActivity extends AppCompatActivity {
     }
     private void alertDialog() {
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
-        dialog.setMessage("Please Select any option");
-        dialog.setTitle("Dialog Box");
-        dialog.setPositiveButton("YES",
+        dialog.setMessage("nom d'utilisateur ou mot de passe incorrect");
+        dialog.setTitle("Erreur");
+        dialog.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int which) {
-                        Toast.makeText(getApplicationContext(),"Yes is clicked",Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(getApplicationContext(),"Nom d'utilisateur ou Mot de passe incorrect",Toast.LENGTH_LONG).show();
                     }
                 });
-        dialog.setNegativeButton("cancel",new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("Annuler",new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
+             //   Toast.makeText(getApplicationContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
             }
         });
         AlertDialog alertDialog=dialog.create();
