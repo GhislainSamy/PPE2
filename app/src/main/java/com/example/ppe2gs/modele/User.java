@@ -1,6 +1,8 @@
 package com.example.ppe2gs.modele;
 
-public class User {
+import java.io.Serializable;
+
+public class User  implements Serializable {
 
     private String id;
     private String username;

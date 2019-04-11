@@ -1,10 +1,12 @@
 package com.example.ppe2gs.vue;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ppe2gs.R;
 import com.example.ppe2gs.modele.User;
@@ -75,32 +78,51 @@ public class MainActivity extends AppCompatActivity {
             return resultat;
         }
 
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-
-
-        }
 
         @Override
         protected void onPostExecute(User o) {
             super.onPostExecute(o);
             User info = o;
 
-
-            if(!info.equals(null)) {
+            Log.i("user1", "ok");
+            if(info != null) {
                 /* Here launching another activity when login successful. If you persist login state
                 use sharedPreferences of Android. and logout button to clear sharedPreferences.
 
                 */
                 Log.i("user", info.getUsername());
                 Intent intent = new Intent(MainActivity.this, EvenementActivity.class);
+                intent.putExtra("key1",info);
                 startActivity(intent);
-                MainActivity.this.finish();
+             //   MainActivity.this.finish();
+            }else {
+                Log.i("else", "ok1");
+                alertDialog();
+
             }
 
         }
 
+    }
+    private void alertDialog() {
+        AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+        dialog.setMessage("Please Select any option");
+        dialog.setTitle("Dialog Box");
+        dialog.setPositiveButton("YES",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+                        Toast.makeText(getApplicationContext(),"Yes is clicked",Toast.LENGTH_LONG).show();
+                    }
+                });
+        dialog.setNegativeButton("cancel",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(),"cancel is clicked",Toast.LENGTH_LONG).show();
+            }
+        });
+        AlertDialog alertDialog=dialog.create();
+        alertDialog.show();
     }
 
     @Override

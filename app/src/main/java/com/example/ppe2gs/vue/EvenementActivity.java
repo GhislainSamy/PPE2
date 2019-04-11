@@ -15,6 +15,7 @@ import android.widget.ListView;
 import com.example.ppe2gs.R;
 import com.example.ppe2gs.modele.Evenement;
 import com.example.ppe2gs.modele.InitList;
+import com.example.ppe2gs.modele.User;
 import com.example.ppe2gs.webservice.OpenDataWS;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.List;
 public class EvenementActivity extends AppCompatActivity {
 
     private List<Evenement> evenements;
-
+  User user ;
     private EvenementAdapter adapterEvenement;
     ListView listeEvnt ;
     @Override
@@ -48,6 +49,8 @@ public class EvenementActivity extends AppCompatActivity {
                         .show();*/
              Log.i("item",item.toString());
                 Intent intent = new Intent(EvenementActivity.this,DescriptionActivity.class);
+                user = (User) getIntent().getSerializableExtra("key1");
+                intent.putExtra("key2",user);
                 intent.putExtra("key",item);
                 startActivity(intent);
             }
