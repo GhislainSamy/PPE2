@@ -64,5 +64,12 @@ public class OpenDataWS {
     }
 
 
-
+   // public static String getInsertUserWS(String idE, String idU) {
+   //     String URL = URL_INSERT+"?idE="++"&idU="+idU;
+   //     Log.i("URL", URL) ;
+//
+//        String reponse = UtilHttp.getHttp(URL );
+//        Log.i("reponse", reponse) ;
+//        return reponse ;
+//    }
 }
