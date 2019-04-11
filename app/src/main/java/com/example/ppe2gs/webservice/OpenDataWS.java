@@ -15,9 +15,13 @@ import java.util.List;
 
 public class OpenDataWS {
 
-    private static final String URL_Auth = "http://192.168.43.165/php_android/Authentification.php";
-    private static final String URL_Evenement = "http://192.168.43.165/php_android/hpdSelectEvenement.php";
-    private static final String URL_INSERT = "http://192.168.43.165/php_android/insertParticiper.php";
+    private static final String URL_Auth = "http://172.20.10.4/php_android/Authentification.php";
+    private static final String URL_Evenement = "http://172.20.10.4/php_android/hpdSelectEvenement.php";
+    private static final String URL_INSERT = "http://172.20.10.4/php_android/insertParticiper.php";
+    private static final String URL_PARTICIPER = "http://172.20.10.4/php_android/selectparticiperbyiduser.php";
+
+
+
 
     public static List<Evenement> getUserWS() throws Exception {
 
@@ -25,6 +29,37 @@ public class OpenDataWS {
         String reponse = UtilHttp.getHttp(URL_Evenement );
         Log.i("URL_Evenement", URL_Evenement);
         Log.i("reponseS", reponse);
+        Gson gson = new Gson();
+        ListEvement resultat = gson.fromJson(reponse, ListEvement.class);
+        Log.i("resultatS",  resultat.getResultEvent().get(0).getEvenement().getAdresse());
+        List<Evenement> fields = new ArrayList<>();
+        if ( resultat == null)  {   throw  new Exception("Variable resultat à null");}
+
+
+        if( resultat.getResultEvent() != null){
+
+            for(ResultEvent record :  resultat.getResultEvent())
+
+            {
+                Log.i("record", record.getEvenement().getAdresse());
+                fields.add(record.getEvenement());
+
+
+            }
+
+        }
+
+        return fields;
+    }
+    public static List<Evenement> getParticiperWS(String idU) throws Exception {
+
+
+
+        String URL = URL_PARTICIPER+"?idU="+idU;
+        String reponse = UtilHttp.getHttp(URL );
+        Log.i("URL_PARTICIPER", URL_PARTICIPER);
+        Log.i("reponseS", reponse);
+
         Gson gson = new Gson();
         ListEvement resultat = gson.fromJson(reponse, ListEvement.class);
         Log.i("resultatS",  resultat.getResultEvent().get(0).getEvenement().getAdresse());

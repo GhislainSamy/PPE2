@@ -70,6 +70,18 @@ public class DescriptionActivity extends AppCompatActivity {
     }
 
 
+    public void afficher(View view) {
+        Intent intent = new Intent(DescriptionActivity.this,ParticiperActivity.class);
+
+        intent.putExtra("key2",user);
+
+        startActivity(intent);
+    }
+
+
+
+
+
     public class MonAstask extends AsyncTask<String,String, String> {
         String resultat;
         String text;

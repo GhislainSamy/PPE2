@@ -24,12 +24,12 @@ public class ParticiperActivity extends AppCompatActivity {
     User user ;
     private EvenementAdapter adapterEvenement;
     ListView listeEvnt ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participer);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+      
         evenements = new ArrayList<>();
         listeEvnt =  (ListView)findViewById(R.id.listeParticiper) ;
         adapterEvenement= new EvenementAdapter(this,evenements);
@@ -49,13 +49,18 @@ public class ParticiperActivity extends AppCompatActivity {
                 intent.putExtra("key2",user);
                 intent.putExtra("key",item);
                 startActivity(intent);*/
+
             }
         });
-
+        user = (User) getIntent().getSerializableExtra("key2");
         ParticiperActivity.MonAstask t = new ParticiperActivity.MonAstask();
         t.execute();
 
     }
+
+
+
+
 
 
 
