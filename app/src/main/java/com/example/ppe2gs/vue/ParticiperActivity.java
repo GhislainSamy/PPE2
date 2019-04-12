@@ -29,7 +29,7 @@ public class ParticiperActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_participer);
-      
+
         evenements = new ArrayList<>();
         listeEvnt =  (ListView)findViewById(R.id.listeParticiper) ;
         adapterEvenement= new EvenementAdapter(this,evenements);
@@ -70,12 +70,14 @@ public class ParticiperActivity extends AppCompatActivity {
         @Override
         protected Object doInBackground(Object[] objects) {
             try {
-                resultat = OpenDataWS.getUserWS();
+                resultat = OpenDataWS.getParticiperWS(user.getId());
                 // text = OpenDataWS.getInsertUserWS();
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            Log.i("recupiduser",user.getId());
+
             return null;
         }
 
@@ -91,5 +93,3 @@ public class ParticiperActivity extends AppCompatActivity {
         }
     }
 }
-
-
