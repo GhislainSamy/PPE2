@@ -99,7 +99,7 @@
         android:layout_marginBottom="8dp"
 
 
-        android:background="#FFEB5E55"
+        android:background="#FECA30"
         android:onClick="connexion"
         android:text="Connexion"
         android:textColor="#FFF"
