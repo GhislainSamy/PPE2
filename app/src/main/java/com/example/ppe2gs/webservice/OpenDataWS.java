@@ -15,10 +15,10 @@ import java.util.List;
 
 public class OpenDataWS {
 
-    private static final String URL_Auth = "http://172.20.10.4/php_android/Authentification.php";
-    private static final String URL_Evenement = "http://172.20.10.4/php_android/hpdSelectEvenement.php";
-    private static final String URL_INSERT = "http://172.20.10.4/php_android/insertParticiper.php";
-    private static final String URL_PARTICIPER = "http://172.20.10.4/php_android/selectparticiperbyiduser.php";
+    private static final String URL_Auth = "http://192.168.1.13/urcroller_php/Authentification.php";
+    private static final String URL_Evenement = "http://192.168.1.13/urcroller_php/hpdSelectEvenement.php";
+    private static final String URL_INSERT = "http://192.168.1.13/urcroller_php/insertParticiper.php";
+    private static final String URL_PARTICIPER = "http://192.168.1.13/urcroller_php/selectparticiperbyiduser.php";
 
 
 

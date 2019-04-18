@@ -56,7 +56,6 @@ public class ParticiperActivity extends AppCompatActivity {
         ParticiperActivity.MonAstask t = new ParticiperActivity.MonAstask();
         t.execute();
 
-
     }
 
 
